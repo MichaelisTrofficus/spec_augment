@@ -11,7 +11,7 @@ setuptools.setup(
     description="Tensorflow Layer that implements the SpecAugment technique",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/MichaelisTrofficus/tfspec",
+    url="https://github.com/MichaelisTrofficus/spec_augment",
     py_modules=["spec_augment"],
     package_dir={"": "spec_augment"},
     classifiers=[

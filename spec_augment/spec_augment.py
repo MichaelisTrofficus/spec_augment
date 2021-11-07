@@ -12,7 +12,7 @@ class SpecAugment(Layer):
                  time_mask_param: int,
                  n_freq_mask: int = 1,
                  n_time_mask: int = 1,
-                 input_mask_value: float = 0.
+                 mask_value: float = 0.
                  ):
         """
         :param freq_mask_param:
@@ -26,7 +26,7 @@ class SpecAugment(Layer):
         self.time_mask_param = time_mask_param
         self.n_freq_mask = n_freq_mask
         self.n_time_mask = n_time_mask
-        self.input_mask_value = tf.cast(input_mask_value, tf.float32)
+        self.mask_value = tf.cast(mask_value, tf.float32)
 
     def _frequency_mask_single(self, input_mel_spectrogram: tf.Tensor) -> tf.Tensor:
         """
@@ -51,7 +51,7 @@ class SpecAugment(Layer):
         mel_repeated = tf.repeat(tf.expand_dims(input_mel_spectrogram, 0), self.n_freq_mask, axis=0)
         masks = tf.cast(tf.map_fn(elems=mel_repeated, fn=self._frequency_mask_single), tf.bool)
         mask = tf.math.reduce_any(masks, 0)
-        return tf.where(mask, self.input_mask_value, input_mel_spectrogram)
+        return tf.where(mask, self.mask_value, input_mel_spectrogram)
 
     def _time_mask_single(self, input_mel_spectrogram: tf.Tensor) -> tf.Tensor:
         """
@@ -76,7 +76,7 @@ class SpecAugment(Layer):
         mel_repeated = tf.repeat(tf.expand_dims(input_mel_spectrogram, 0), self.n_time_mask, axis=0)
         masks = tf.cast(tf.map_fn(elems=mel_repeated, fn=self._time_mask_single), tf.bool)
         mask = tf.math.reduce_any(masks, 0)
-        return tf.where(mask, self.input_mask_value, input_mel_spectrogram)
+        return tf.where(mask, self.mask_value, input_mel_spectrogram)
 
     def _apply_spec_augment(self, input_mel_spectrogram: tf.Tensor) -> tf.Tensor:
         """
