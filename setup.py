@@ -5,7 +5,7 @@ with open("README_package.md", "r") as fh:
 
 setuptools.setup(
     name="spec_augment",
-    version="0.0.2",
+    version="0.0.3",
     author="MTrofficus",
     author_email="miguel.otero.pedrido.1993@gmail.com",
     description="Tensorflow Layer that implements the SpecAugment technique",
