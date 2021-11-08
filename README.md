@@ -1,7 +1,8 @@
 # Theory
 
-This library contains an implementation of SpecAugment, a simple data augmentation technique for speech recognition. 
-Following the kapre philosophy, the implementation of this method has been encapsulated in a custom layer of 
+This library contains an implementation of [SpecAugment](https://arxiv.org/abs/1904.08779), a simple data 
+augmentation technique for speech recognition. Following the [kapre](https://github.com/keunwoochoi/kapre) philosophy,
+the implementation of this method has been encapsulated in a custom layer of 
 Tensorflow, so that it can be incorporated into our neural network architectures directly.
 
 # Install Package
@@ -32,11 +33,12 @@ SpecAugment(freq_mask_param=5, time_mask_param=10, n_freq_mask=5, n_time_mask=3,
 
 # Example
 
-SpecAugment is a technique applicable to spectrograms. Consequently, we must use this type of objects for their input.
-In the following example, kapre is used to compute the Mel Spectrogram of a sample audio from Librosa.
+SpecAugment is a technique applicable to spectrograms. In the following example, kapre is used to compute
+the Mel Spectrogram of a sample audio from Librosa.
 
 ```
 import tensorflow as tf
+from tensorflow.keras.models import Sequential
 import librosa
 import kapre
 from spec_augment import SpecAugment
@@ -85,6 +87,8 @@ Transformed Mel Spectrogram
 ![](images/mel_transformed.png)
 
 
+# References
 
+https://arxiv.org/abs/1904.08779
 
 

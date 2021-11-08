@@ -15,11 +15,11 @@ class SpecAugment(Layer):
                  mask_value: float = 0.
                  ):
         """
-        :param freq_mask_param:
-        :param time_mask_param:
-        :param n_freq_mask:
-        :param n_time_mask:
-        :param input_mask_value:
+        :param freq_mask_param: Frequency Mask Parameter (F in the paper)
+        :param time_mask_param: Time Mask Parameter (T in the paper)
+        :param n_freq_mask: Number of frequency masks to apply (mF in the paper). By default is 1.
+        :param n_time_mask: Number of time masks to apply (mT in the paper). By default is 1.
+        :param mask_value: Imputation value. By default is zero.
         """
         super(SpecAugment, self).__init__(name="SpecAugment")
         self.freq_mask_param = freq_mask_param
