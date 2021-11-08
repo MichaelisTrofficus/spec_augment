@@ -19,7 +19,8 @@ SpecAugment(freq_mask_param=5, time_mask_param=10)
 
 SpecAugment(freq_mask_param=5, time_mask_param=10, n_freq_mask=5, n_time_mask=3)
 
-SpecAugment(freq_mask_param=5, time_mask_param=10, n_freq_mask=5, n_time_mask=3, mask_value=0)
+SpecAugment(freq_mask_param=5, time_mask_param=10, n_freq_mask=5, n_time_mask=3,
+            mask_value=0)
 ```
 
 # Arguments
@@ -47,7 +48,6 @@ y, sr = librosa.load(filename)
 audio_tensor = tf.reshape(tf.cast(y, tf.float32), (1, -1, 1))
 input_shape = y.reshape(-1, 1).shape
 
-
 melgram = kapre.composed.get_melspectrogram_layer(input_shape=input_shape,
                                                   n_fft=1024,
                                                   return_decibel=True,
@@ -73,18 +73,3 @@ model.add(spec_augment)
 
 model.summary()
 ```
-
-Let's see the transformation applied to the Mel Spectrogram.
-
-Original Mel Spectrogram
-
-![](images/mel.png)
-
-Transformed Mel Spectrogram
-
-![](images/mel_transformed.png)
-
-
-
-
-
