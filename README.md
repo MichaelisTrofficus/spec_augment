@@ -10,7 +10,7 @@ Tensorflow, so that it can be incorporated into our neural network architectures
 To install the package execute the following command.
 
 ```
-pip install spec_augment
+pip install spec-augment
 ```
 
 # Usage
