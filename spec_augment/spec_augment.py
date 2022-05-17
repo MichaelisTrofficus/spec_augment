@@ -111,6 +111,6 @@ class SpecAugment(Layer):
             "T": self.time_mask_param,
             "mF": self.n_freq_mask,
             "mT": self.n_time_mask,
-            "mask_value": self.input_mask_value
+            "mask_value": self.mask_value.numpy(),
         }
         return config
