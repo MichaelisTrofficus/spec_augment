@@ -107,10 +107,10 @@ class SpecAugment(Layer):
         :return:
         """
         config = {
-            "F": self.freq_mask_param,
-            "T": self.time_mask_param,
-            "mF": self.n_freq_mask,
-            "mT": self.n_time_mask,
+            "freq_mask_param": self.freq_mask_param,
+            "time_mask_param": self.time_mask_param,
+            "n_freq_mask": self.n_freq_mask,
+            "n_time_mask": self.n_time_mask,
             "mask_value": self.mask_value.numpy(),
         }
         return config
